@@ -39,4 +39,7 @@ def test_example_bar_chart():
 
     test_bar_chart = app.create_example_barchart(test_dataframe)
 
-    assert test_bar_chart.layout["barmode"] == "group"
+    assert test_bar_chart.layout.barmode == "group"
+    assert test_bar_chart.layout.xaxis.title.text == "Fruit"
+    assert test_bar_chart.layout.yaxis.title.text == "Amount"
+    assert test_bar_chart.layout.legend.title.text == "City"
