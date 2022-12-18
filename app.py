@@ -1,5 +1,8 @@
 import pandas as dataframes
 
+import plotly.express as graphs
+import plotly
+
 
 def create_example_dataframe():
     return dataframes.DataFrame(
@@ -9,3 +12,6 @@ def create_example_dataframe():
             "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"],
         }
     )
+
+def create_example_barchart(dataframe):
+    return graphs.bar(dataframe, x="Fruit", y="Amount", color="City", barmode="group")
