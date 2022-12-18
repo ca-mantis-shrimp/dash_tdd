@@ -39,4 +39,4 @@ def test_example_bar_chart():
 
     test_bar_chart = app.create_example_barchart(test_dataframe)
 
-    assert test_bar_chart is not None
+    assert test_bar_chart.layout["barmode"] == "group"
