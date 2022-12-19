@@ -12,6 +12,9 @@ def create_test_dataframe():
         }
     )
 
+def create_test_plotly_barchart():
+    graphs.bar(create_test_dataframe(), x="Fruit", y="Amount", color="City", barmode="group")
+
 
 def test_example_dataframe_creation():
     test_dataframe = app.create_example_dataframe()
@@ -53,4 +56,20 @@ def test_example_div():
     test_div = app.create_example_div()
 
     assert test_div.children == "Dash: A web application framework for Python."
+
+def test_example_dash_graph():
+    test_ploty_barchart = create_test_plotly_barchart()
+
+    test_dash_graph = app.create_example_dash_graph(test_ploty_barchart)
+
+    assert test_dash_graph.figure == test_ploty_barchart
+
+def test_dash_graph_id():
+    test_ploty_barchart = create_test_plotly_barchart()
+
+    test_dash_graph = app.create_example_dash_graph(test_ploty_barchart)
+
+    assert test_dash_graph.id == "example-graph"
+
+    
 
