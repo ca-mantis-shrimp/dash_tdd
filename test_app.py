@@ -43,3 +43,14 @@ def test_example_bar_chart():
     assert test_bar_chart.layout.xaxis.title.text == "Fruit"
     assert test_bar_chart.layout.yaxis.title.text == "Amount"
     assert test_bar_chart.layout.legend.title.text == "City"
+
+def test_example_header():
+    test_header = app.create_example_header()
+
+    assert test_header.children == "Hello Dash"
+
+def test_example_div():
+    test_div = app.create_example_div()
+
+    assert test_div.children == "Dash: A web application framework for Python."
+
