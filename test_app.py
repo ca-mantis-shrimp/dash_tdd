@@ -2,6 +2,7 @@ import app
 
 import pandas as dataframes
 import plotly.express as graphs
+from dash import dcc, html
 
 def create_test_dataframe():
     return dataframes.DataFrame(
@@ -14,6 +15,9 @@ def create_test_dataframe():
 
 def create_test_plotly_barchart():
     graphs.bar(create_test_dataframe(), x="Fruit", y="Amount", color="City", barmode="group")
+
+def create_test_dash_barchart():
+    return dcc.Graph(id="example-graph", figure=create_test_plotly_barchart())
 
 
 def test_example_dataframe_creation():
@@ -71,5 +75,10 @@ def test_dash_graph_id():
 
     assert test_dash_graph.id == "example-graph"
 
-    
+def test_dash_app():
+    test_app = app.create_example_layout()
+
+    assert test_app.children[0].children == "Hello Dash"
+    assert test_app.children[1].children == "Dash: A web application framework for Python."
+#    assert test_app.children[2] == create_test_dash_barchart()
 
